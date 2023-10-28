@@ -1,0 +1,43 @@
+-- Todos os documentos
+
+xquery version "1.0-ml";
+
+(: Replace this with your actual query :)
+let $results := fn:collection()
+(: Start index of the result set :)
+let $start := 1
+(: Number of results to limit to :)
+let $limit := 500000
+
+let $limitedResults := fn:subsequence($results, $start, $limit)
+
+return $limitedResults
+
+-- 
+
+xquery version "1.0-ml";
+
+let $results := fn:collection() (: Replace this with your actual query :)
+
+let $value := "ZZZ"
+
+let $filteredResults := 
+  for $doc in $results
+  where $value = xs:string($doc//currency)
+  return $doc
+
+return $filteredResults
+
+--
+
+(: Replace this with your actual query :)
+let $results := fn:collection()
+
+let $value := 500000
+
+let $filteredResults := 
+  for $doc in $results
+  where  $value > xs:integer($doc//price) and xs:string($doc//currency) = "ZZZ"
+  return $doc
+
+return $filteredResults
